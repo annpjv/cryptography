@@ -1,0 +1,54 @@
+#include<stdio.h>
+#include<string.h>
+void main()
+{
+ char p[50],veg[50][50],c[50],k[25],n1,n2;
+ int n,i,j,a,l,kl;
+ clrscr();
+ printf("\n\tvigenere table\n");
+ for(i=0;i<26;i++)
+ {
+  for(j=0;j<26;j++)
+   {
+    if((i+j+97)>122)
+     {
+	n=(i+j+97)-26;
+     }
+    else
+     {
+	n=i+j+97;
+     }
+    veg[i][j]=n;
+    printf(" %c",n);
+   }
+   printf("\n");
+ }
+ printf("\nplain text...");
+ gets(p);
+ printf("\nkey...");
+ gets(k);
+ l=strlen(p);
+ kl=strlen(k);
+ j=0;
+ for(i=0;i<l;i++)
+   {
+    if(j==kl)
+      j=0;
+    if(k[j]==' ')
+      j++;
+    if(p[i]==' ')
+      {printf(" ");
+       i++;
+      }
+
+    if(j<kl)
+      {
+        n1=k[j]-97;
+        n2=p[i]-97;
+        printf("%c",veg[n1][n2]);
+        j++;
+      }
+   }
+
+ getch();
+ }
