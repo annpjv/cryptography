@@ -1,0 +1,53 @@
+#include<stdio.h>
+#include<math.h>
+#include<conio.h>
+void main()
+{
+ char p[50]={"\0"},a[20][20]={"\0"};
+ int j,k,i,l,x,d,c=0;
+ clrscr();
+ printf("\nplain text...");
+ gets(p);
+ printf("\n enter the no of rails...");
+ scanf("%d",&x);
+ l=strlen(p);
+ i=0;
+ k=0;
+ while(i<l)
+  {
+   for(j=0;j<x;j++)
+    {
+      if(p[i]==' ')
+          i++;
+      a[j][k]=p[i];
+      i++;
+    }
+   k++;
+  }
+ printf("\nrail fence pattern...\n\n");
+ for(i=0;i<x;i++)
+  {
+   for(j=0;j<k;j++)
+   {
+    if(a[i][j]!='\0')
+      printf("%c ",a[i][j]);
+   }
+   printf("\n");
+   c++;
+   for(d=0;d<c;d++)
+    {
+      printf(" ");
+     }
+  }
+  printf("\ncipher text...");
+ for(i=0;i<x;i++)
+   {
+     for(j=0;j<k;j++)
+      {
+       if(a[i][j]!='\0')
+          printf("%c",a[i][j]);
+      }
+   }
+ printf("\n");
+ getch();
+}
