@@ -1,0 +1,72 @@
+#include<stdio.h>
+#include<conio.h>
+#include<string.h>
+void main()
+{
+ char p[50],veg[50][50],c[50],k,n1,n2,key[50];
+ int n,i,j,a,l,kl;
+ clrscr();
+ printf("\n\tvigenere table\n\n");
+ for(i=0;i<26;i++)
+ {
+  for(j=0;j<26;j++)
+   {
+    if((i+j+97)>122)
+     {n=(i+j+97)-26;
+     }
+    else
+     {n=i+j+97;
+     }
+    veg[i][j]=n;
+    printf(" %c",n);
+   }printf("\n");
+ }
+printf("\nplain text...");
+ gets(p);
+ printf("\nkey...");
+ k=getchar();
+ printf("\n generated key...");
+ l=strlen(p);
+ j=0;
+ for(i=0;i<l;i++)
+ {
+ if(p[i]==' ')
+ {
+ i++;
+ printf(" ");
+ //key[i]=' ';
+ }
+ n1=k-97;
+ n2=p[i]-97;
+ k=veg[n1][n2];
+ printf("%c",veg[n1][n2]);
+ key[j]=veg[n1][n2];
+ j++;
+ }
+ printf("\ncipher text....");
+ kl=strlen(key);
+j=0;
+ for(i=0;i<l;i++)
+   {
+    if(j==kl)
+    j=0;
+    if(key[j]==' ')
+    j++;
+    if(p[i]==' ')
+    {printf(" ");
+    i++;
+     }
+
+    if(j<kl)
+    {
+    n1=key[j]-97;
+    n2=p[i]-97;
+    printf("%c",veg[n1][n2]);
+
+
+    j++;
+   }
+   }
+
+ getch();
+}
