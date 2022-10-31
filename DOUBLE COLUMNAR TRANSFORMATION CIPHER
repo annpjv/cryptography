@@ -1,0 +1,172 @@
+#include<stdio.h>
+#include<conio.h>
+#include<math.h>
+#include<string.h>
+void main()
+{
+ char pt[50]={"\0"},pt1[50]={"\0"},ptk[10][10]={"\0"},ptk1[10][10]={"\0"},key[10]={"\0"},ky[10]={"\0"},ky1[10]={"\0"},t;
+ int i,j,x=0,in[20],n,d,z=0;
+ double lp,lk,r;
+ clrscr();
+ printf("\nEnter the plain text::");
+ gets(pt);
+ printf("\nEnter the key::");
+ gets(key);
+ lp=strlen(pt);
+ lk=strlen(key);
+ r=ceil(lp/lk);
+ strcpy(ky,key);
+ for(i=0;i<lk;i++)
+ {
+  for(j=0;j<lk-1;j++)
+  {
+   if(ky[j]>ky[j+1])
+   {
+    t=ky[j+1];
+    ky[j+1]=ky[j];
+    ky[j]=t;
+   }
+  }
+ }
+ puts(ky);
+ while(x<=lk)
+ {
+   for(i=0;i<lk;i++)
+   {
+	 if(key[x]==ky[i])
+	 in[x]=i;
+   }
+	 x++;
+ }
+ for(j=0;j<lk;j++)
+ {
+  printf("%d ",in[j]);
+ }
+ n=0;
+ while(n<=lp)
+ {
+  for(i=0;i<r;i++)
+   {
+    for(j=0;j<lk;j++)
+     {
+	 if(pt[n]==' ')
+	 {
+	   n++;
+	   j--;
+	 }
+	 else
+	 {
+	   ptk[i][j]=pt[n];
+	   n++;
+	 }
+     }
+   }
+ }
+ printf("\n");
+ for(i=0;i<=r;i++)
+ {
+   for(j=0;j<lk;j++)
+   {
+	   printf("%c ",ptk[i][j]);
+   }
+   printf("\n");
+ }
+ printf("\n Columnar Transposition Ciphertext::");
+ printf("\n");
+ for(i=0;i<lk;i++)
+ {
+  for(j=0;j<lk;j++)
+  {
+   if(in[j]==i)
+   {
+    for(d=0;d<r;d++)
+    {
+     if(ptk[d][j]!='\0')
+     {
+      printf("%c",ptk[d][j]);
+      pt1[z]=ptk[d][j];
+      z++;
+     }
+    }
+   }
+  }
+ }
+ lp=strlen(pt1);
+ lk=strlen(key);
+ strcpy(ky1,key);
+ for(i=0;i<lk;i++)
+ {
+  for(j=0;j<lk-1;j++)
+  {
+   if(ky1[j]>ky1[j+1])
+    {
+     t=ky1[j+1];
+     ky1[j+1]=ky1[j];
+     ky1[j]=t;
+    }
+  }
+ }
+ printf("\n\n");
+ puts(pt1);
+ while(x<=lk)
+ {
+   for(i=0;i<lk;i++)
+   {
+	 if(key[x]==ky1[i])
+	 in[x]=i;
+   }
+   x++;
+ }
+ for(j=0;j<lk;j++)
+ {
+  printf("%d ",in[j]);
+ }
+ n=0;
+ while(n<=lp)
+ {
+  for(i=0;i<r;i++)
+   {
+	 for(j=0;j<lk;j++)
+	 {
+          if(pt1[n]==' ')
+	  {
+	   n++;
+	   j--;
+	  }
+	  else
+	  {
+	   ptk1[i][j]=pt1[n];
+	   n++;
+	  }
+	 }
+   }
+ }
+ printf("\n");
+ for(i=0;i<=r;i++)
+ {
+   for(j=0;j<lk;j++)
+   {
+	   printf("%c ",ptk1[i][j]);
+   }
+   printf("\n");
+ }
+ printf("\nDouble Columnar Transposition Ciphertext::");
+ printf("\n");
+ for(i=0;i<lk;i++)
+ {
+  for(j=0;j<lk;j++)
+  {
+   if(in[j]==i)
+   {
+	 for(d=0;d<r;d++)
+	 {
+	  if(ptk1[d][j]!='\0')
+	  {
+	   printf("%c",ptk1[d][j]);
+	  }
+	 }
+   }
+  }
+ } getch();
+}
+
