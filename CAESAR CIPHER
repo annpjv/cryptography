@@ -1,0 +1,43 @@
+#include<stdio.h>
+#include<conio.h>
+#include<string.h>
+#include<math.h>
+void main()
+{
+ int i,l,p,rd=0;
+ char s[50],c[50];
+ clrscr();
+ printf("\nplain text...");
+ gets(s);
+ s[i]=tolower(s[i]);
+ l=strlen(s);
+ printf("\nposition...");
+ scanf("%d",&p);
+ if(p>26)
+  {
+   rd=p%26;
+  }
+ else
+  {
+  rd=p;
+  }
+ printf("cipher text...\t");
+ for(i=0;i<l;i++)
+  {
+      if(s[i]==32)
+	  {
+	   c[i]=s[i];
+	  }
+      else if((s[i]+rd)>122)
+	  {
+	   c[i]=(s[i]+rd)-26;
+	  }
+      else
+	  {
+	   c[i]=s[i]+rd;
+	  }
+   printf("%c",c[i]);
+  }
+  getch();
+ }
+
