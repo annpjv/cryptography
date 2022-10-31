@@ -1,0 +1,85 @@
+#include<stdio.h>
+#include<conio.h>
+#include<math.h>
+#include<string.h>
+void main()
+{
+ char pt[50]={"\0"},ptk[10][10]={"\0"},key[50]={"\0"},ky[50]={"\0"},t;
+ int i,j,x=0,in[20],n,d;
+ double lp,lk,r;
+ clrscr();
+ printf("\nEnter the plain text::");
+ gets(pt);
+ lp=strlen(pt);
+ printf("\nEnter the key::");
+ gets(key);
+ lk=strlen(key);
+ strcpy(ky,key);
+ for(i=0;i<lk;i++)
+ {
+  for(j=0;j<lk-1;j++)
+  {
+   if(ky[j]>ky[j+1])
+   {
+    t=ky[j+1];
+    ky[j+1]=ky[j];
+    ky[j]=t;
+}
+  }
+ }
+ puts(ky);
+ while(x<=lk)
+ {
+  for(i=0;i<lk;i++)
+  {
+	 if(key[x]==ky[i])
+	 in[x]=i;
+  }
+   x++;
+ }
+ for(j=0;j<lk;j++)
+   printf("%d ",in[j]);
+ n=0;
+ while(n<=lp)
+ {
+  for(i=0;i<lp;i++)
+  {
+   for(j=0;j<lk;j++)
+   {
+    if(pt[n]==' ')
+    {
+	  n++;
+	  j--;
+    }
+    else
+    {
+	   ptk[i][j]=pt[n];
+	   n++;
+    }
+   }
+  }
+ }
+ r=ceil(lp/lk);
+ printf("\n");
+ for(i=0;i<=r;i++)
+ {
+  for(j=0;j<lk;j++)
+    printf("%c ",ptk[i][j]);
+  printf("\n");
+ }
+ printf("\nCIPHERTEXT::\n");
+ for(i=0;i<lk;i++)
+ {
+  for(j=0;j<lk;j++)
+  {
+   if(in[j]==i)
+   {
+         for(d=0;d<r;d++)
+    {
+     if(ptk[d][j]!='\0')
+         printf("%c",ptk[d][j]);
+    }
+   }
+  }
+ }
+ getch();
